@@ -1,1 +1,1 @@
-jetcommerce
+Prova realizada em full css, e html, fizemos mudanças em estruturas e componente, muito simples de mexer muito agradavel. Resultado muito satisfatorio da plataforma
