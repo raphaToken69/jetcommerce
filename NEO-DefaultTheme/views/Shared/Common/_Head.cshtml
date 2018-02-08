@@ -1,0 +1,51 @@
+﻿@{
+    string _classSearch = Session["idEventList"] == null ? "search" : "filterListEventsProducts";
+}
+
+<div class="ui container fluid _header">
+    <div class="ui container">
+        <div class="ui middle aligned three column left grid">
+            <div class="row">
+                <div class="ui ten wide mobile three wide tablet two wide computer column">
+                    <a href="@(Session["idEventList"] == null ? "/Home" : "#")">
+                        <img class="ui middle aligned image" src="https://nonagon.style/wp-content/uploads/2017/10/Nonagon-Style-v6.svg" alt="">
+                    </a>
+                </div>
+                <div class="ui ten wide mobile three wide tablet seven wide computer column">
+                    @{
+                        @Html.Action("Menu", "Home")                      
+                    }
+                </div>
+                <div class="ui right aligned five wide tablet four wide computer column searchcolumn">
+                    <div class="ui category @_classSearch">
+                        <div class="ui icon input fluid">
+                            <input class="prompt" type="text" placeholder="Buscar...">
+                            <i class="search icon"></i>
+                        </div>
+                        <div class="results"></div>
+                    </div>
+                </div>
+                <div class="ui right aligned six wide mobile five wide tablet three wide computer column">
+                    <div id="cartButton" class="ui labeled button cartbutton mini-cart no margin bottom" tabindex="0" data-segment="@(Session["segment"] != null ? Session["segment"] : "b2c")">
+                        <div class="ui basic primary button ">
+                            <i class="cart icon"></i>
+                            <span>@(Session["idEventList"] == null && Session["EventList"] == null ? "Meu Carrinho" : "Minha Lista")</span>
+                        </div>
+                        <a class="ui left pointing primary label" id="total_itens_card">
+                            @{
+                                if (Session["EventList"] == null)
+                                {
+                                    @Html.Action("TotalItensCart", "Checkout")
+                                }else
+	                            {
+	                                @Html.Action("TotalItensList", "EventList")
+                                }
+                            }
+                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
